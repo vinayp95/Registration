@@ -1,20 +1,111 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="container">
+  <div class="header">
+    <div>
+      <h3>Logo</h3>
+    </div>
+  </div>
+  <div class="form-container col-md-12 col-sm-12 col-lg-12">
+    <div class="frm">
+      <div class="left">
+        <!-- DIV_1 -->
+      </div>
+      <div class="right">
+        <p>Registration</p>
+        <div style="text-align: left;">
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div>
+              <div class="field">
+                <input placeholder="First Name" type="text" formControlName="firstname" class="form-control" />
+                <div class="error-messages">
+                  <ng-container *ngFor="let error of error_messages.firstname">
+                    <div class="error-message"
+                      *ngIf="registerForm.get('firstname').hasError(error.type) && (registerForm.get('firstname').dirty || registerForm.get('firstname').touched)">
+                      <span>{{ error.message }}</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
 
+              <div class="field">
+                <input placeholder="Last Name" type="text" formControlName="lastname" class="form-control" />
+                <div class="error-messages">
+                  <ng-container *ngFor="let error of error_messages.lastname">
+                    <div class="error-message"
+                      *ngIf="registerForm.get('lastname').hasError(error.type) && (registerForm.get('lastname').dirty || registerForm.get('lastname').touched)">
+                      <span>{{ error.message }}</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+
+              <div class="field">
+                <input placeholder="Phone Number" type="number" formControlName="phone" class="form-control" />
+                <div class="error-messages">
+                  <ng-container *ngFor="let error of error_messages.phone">
+                    <div class="error-message"
+                      *ngIf="registerForm.get('phone').hasError(error.type) && (registerForm.get('phone').dirty || registerForm.get('phone').touched)">
+                      <span>{{ error.message }}</span>
+                    </div>
+                  </ng-container>
+                </div>
+
+              </div>
+
+              <div class="field">
+                <input type="text" placeholder="Email ID" formControlName="email" class="form-control" />
+                <div class="error-messages">
+                  <ng-container *ngFor="let error of error_messages.email">
+                    <div class="error-message" *ngIf="registerForm.get('email').hasError(error.type) && 
+              (registerForm.get('email').dirty || registerForm.get('email').touched)">
+                      <span>{{ error.message }}</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+
+              <div class="field">
+                <input placeholder="Password" type="password" formControlName="password" class="form-control" />
+                <div class="error-messages">
+                  <ng-container *ngFor="let error of error_messages.password">
+                    <div class="error-message"
+                      *ngIf="registerForm.get('password').hasError(error.type) && (registerForm.get('password').dirty || registerForm.get('password').touched)">
+                      <span>{{ error.message }}</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+
+              <div class="field">
+                <input placeholder="Re enter Password" type="password" formControlName="confirmpassword"
+                  class="form-control" />
+                <div class="error-messages">
+                  <ng-container *ngFor="let error of error_messages.confirmpassword">
+                    <div class="error-message"
+                      *ngIf="registerForm.get('confirmpassword').hasError(error.type) && (registerForm.get('confirmpassword').dirty || registerForm.get('confirmpassword').touched)">
+                      <span>{{ error.message }}</span>
+                    </div>
+                  </ng-container>
+                </div>
+                {{ registerForm.errors.password_mismatch }}
+              </div>
+              <div>
+                <input type="checkbox" id="chk">
+                <label for="chk" style="font-size: 14px;"> by signing up, I accept Terms & Condition</label>
+              </div>
+              
+              <div class="field">
+                <button class="btn btn-primary">
+                  Register
+                </button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <p style="text-align: center;">Copyright 2019</p>
+  </div>
+</div>
